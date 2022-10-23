@@ -7,7 +7,7 @@ namespace Challenge.Tests
     public class StudentTests
     {
         [Fact]
-        public void Test1()
+        public void GetStatisticsWorksCorrectly()
         {
             var student = new Student("Magda");
             student.AddGrade(10);

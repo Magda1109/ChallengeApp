@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ChallengeApp
 {
-    public class Student
+    public class Student : NamedObject
     {
         public delegate void GradeAddedDelegate(object sender, EventArgs args);
         public delegate void GradeAddedBelowCDelegate(object sender, EventArgs args);
@@ -14,11 +14,9 @@ namespace ChallengeApp
 
         public const string SUBJECT = "Math";
 
-        public Student(string name)
+        public Student(string name) : base(name)
         {
-            this.Name = name;
         }
-        public string Name { get; set; }
 
         public void ChangeName(string name)
         {
@@ -51,8 +49,8 @@ namespace ChallengeApp
                     GradeAdded(this, new EventArgs());
                 }
             }
-            else if(GradeBelowC != null && grade >= 0 && grade < 70)
-            //dopisz co jak grade ktoś wpisze D lub F
+            else if (GradeBelowC != null && grade >= 0 && grade < 70)
+            //dopisz co jak grade ktoś wpisze D, +D, D+ lub F
             {
                 GradeBelowC(this, new EventArgs());
                 this.grades.Add(grade);
@@ -81,32 +79,35 @@ namespace ChallengeApp
 
             else if (!success)
             {
-                if (grade == "A" || grade == "B" || grade == "C" || grade == "D" || grade == "F")
+                if (grade == "A" || grade == "B" || grade == "C" || grade == "D" || grade == "E" || grade == "F" || grade == "B+" || grade == "+B" || grade == "C+" || grade == "+C" || grade == "D+" || grade == "+D" || grade == "E+" || grade == "+E")
                 {
                     switch (grade)
                     {
                         case "A":
-                            this.AddGrade(90);
-                            break;
-                        case "A+":
-                            this.AddGrade(95);
+                            this.AddGrade(100);
                             break;
                         case "B":
-                            this.AddGrade(80);
+                            this.AddGrade(90);
                             break;
-                        case "B+":
-                            this.AddGrade(85);
+                        case "B+" or "+B":
+                            this.AddGrade(95);
                             break;
                         case "C":
-                            this.AddGrade(70);
+                            this.AddGrade(80);
                             break;
-                        case "C+":
-                            this.AddGrade(75);
+                        case "C+" or "+C":
+                            this.AddGrade(85);
                             break;
                         case "D":
+                            this.AddGrade(70);
+                            break;
+                        case "D+" or "+D":
+                            this.AddGrade(75);
+                            break;
+                        case "E":
                             this.AddGrade(60);
                             break;
-                        case "D+":
+                        case "E+" or "+E":
                             this.AddGrade(65);
                             break;
                         default:
@@ -131,10 +132,18 @@ namespace ChallengeApp
             result.Low = double.MaxValue;
 
             for (var index = 0; index < grades.Count; index++)
-            {   
-                result.Low = Math.Min(grades[index], result.Low);
-                result.High = Math.Max(grades[index], result.High);
-                result.Average += grades[index];
+            {
+                if (grades.Count == 0)
+                {
+                    Console.WriteLine("No grade has been entered.");
+                    return result;
+                }
+                else
+                {
+                    result.Low = Math.Min(grades[index], result.Low);
+                    result.High = Math.Max(grades[index], result.High);
+                    result.Average += grades[index];
+                }
             }
             result.Average /= grades.Count;
 
@@ -154,6 +163,10 @@ namespace ChallengeApp
 
                 case var d when d >= 60:
                     result.Letter = 'D';
+                    break;
+
+                case var d when d >= 50:
+                    result.Letter = 'E';
                     break;
 
                 default:

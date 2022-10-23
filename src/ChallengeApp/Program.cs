@@ -9,12 +9,6 @@ namespace ChallengeApp
         {
             var student = new Student("Magda");
             student.ChangeName("123Magda456");
-            // student.AddGrade("140");
-            // student.AddGrade(130.4);
-            // student.AddGrade("A");
-            // student.AddGrade("20.54");
-            // student.AddGrade(44);
-            // student.AddGrade("55");
 
             // var name = student.Name;
             // student.Name = "ABC";
@@ -57,7 +51,8 @@ namespace ChallengeApp
 
         static void OnGradeAdded(object sender, EventArgs args)
         {
-            Console.WriteLine($"New grade has been added.");
+            Console.WriteLine($"New grade {sender} has been added.");
+            //co tu wpisać, jaki argument, żeby pojawiało się jaka ocena została dodana
         }
 
         static void OnGradeBelowC(object sender, EventArgs args)
