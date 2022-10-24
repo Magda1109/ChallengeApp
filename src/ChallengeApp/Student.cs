@@ -40,7 +40,7 @@ namespace ChallengeApp
 
         public void AddGrade(double grade)
         {
-            if (grade >= 70 && grade <= 100)
+            if (grade > 75 && grade <= 100)
             {
                 this.grades.Add(grade);
 
@@ -49,9 +49,9 @@ namespace ChallengeApp
                     GradeAdded(this, new EventArgs());
                 }
             }
-            else if (GradeBelowC != null && grade >= 0 && grade < 70)
-            //dopisz co jak grade ktoś wpisze D, +D, D+ lub F
+            else if (GradeBelowC != null && grade >= 0 && grade <= 75)
             {
+                GradeAdded(this, new EventArgs());
                 GradeBelowC(this, new EventArgs());
                 this.grades.Add(grade);
             }
@@ -79,7 +79,7 @@ namespace ChallengeApp
 
             else if (!success)
             {
-                if (grade == "A" || grade == "B" || grade == "C" || grade == "D" || grade == "E" || grade == "F" || grade == "B+" || grade == "+B" || grade == "C+" || grade == "+C" || grade == "D+" || grade == "+D" || grade == "E+" || grade == "+E")
+                if (grade == "A" || grade == "B" || grade == "C" || grade == "D" || grade == "E" || grade == "F" || grade == "B+" || grade == "+B" || grade == "C+" || grade == "+C" || grade == "D+" || grade == "+D" || grade == "E+" || grade == "+E" || grade == "F")
                 {
                     switch (grade)
                     {
@@ -110,18 +110,19 @@ namespace ChallengeApp
                         case "E+" or "+E":
                             this.AddGrade(65);
                             break;
+                        case "F":
+                            this.AddGrade(0);
+                            break;
                         default:
                             this.AddGrade(0);
                             break;
                     }
                 }
+                else
+                {
+                    Console.WriteLine($"Grade '{grade}' is incorrect.");
+                }
             }
-
-            else
-            {
-                Console.WriteLine($"Grade '{grade}' is incorrect.");
-            }
-
         }
 
         public Statistics GetStatistics()
@@ -131,19 +132,17 @@ namespace ChallengeApp
             result.High = double.MinValue;
             result.Low = double.MaxValue;
 
+            if (grades.Count == 0)
+            {
+                Console.WriteLine("No grade has been entered.");
+                return result;
+            }
+
             for (var index = 0; index < grades.Count; index++)
             {
-                if (grades.Count == 0)
-                {
-                    Console.WriteLine("No grade has been entered.");
-                    return result;
-                }
-                else
-                {
-                    result.Low = Math.Min(grades[index], result.Low);
-                    result.High = Math.Max(grades[index], result.High);
-                    result.Average += grades[index];
-                }
+                result.Low = Math.Min(grades[index], result.Low);
+                result.High = Math.Max(grades[index], result.High);
+                result.Average += grades[index];
             }
             result.Average /= grades.Count;
 

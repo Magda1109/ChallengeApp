@@ -6,7 +6,7 @@ namespace ChallengeApp
     class Program
     {
         static void Main(string[] args)
-        {
+        { 
             var student = new Student("Magda");
             student.ChangeName("123Magda456");
 
@@ -28,8 +28,7 @@ namespace ChallengeApp
 
                 try
                 {
-                    var grade = double.Parse(input);
-                    student.AddGrade(grade);
+                    student.AddGrade(input);
                 }
                 catch (FormatException ex)
                 {
@@ -51,8 +50,7 @@ namespace ChallengeApp
 
         static void OnGradeAdded(object sender, EventArgs args)
         {
-            Console.WriteLine($"New grade {sender} has been added.");
-            //co tu wpisać, jaki argument, żeby pojawiało się jaka ocena została dodana
+            Console.WriteLine($"New grade has been added.");
         }
 
         static void OnGradeBelowC(object sender, EventArgs args)

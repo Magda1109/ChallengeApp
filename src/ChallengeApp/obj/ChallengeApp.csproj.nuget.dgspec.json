@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Magda\\Challenge\\src\\CHallengeAPp\\ChallengeApp.csproj": {}
+    "C:\\Users\\Magda\\Challenge\\src\\ChallengeApp\\ChallengeApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Magda\\Challenge\\src\\CHallengeAPp\\ChallengeApp.csproj": {
+    "C:\\Users\\Magda\\Challenge\\src\\ChallengeApp\\ChallengeApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Magda\\Challenge\\src\\CHallengeAPp\\ChallengeApp.csproj",
+        "projectUniqueName": "C:\\Users\\Magda\\Challenge\\src\\ChallengeApp\\ChallengeApp.csproj",
         "projectName": "ChallengeApp",
-        "projectPath": "C:\\Users\\Magda\\Challenge\\src\\CHallengeAPp\\ChallengeApp.csproj",
+        "projectPath": "C:\\Users\\Magda\\Challenge\\src\\ChallengeApp\\ChallengeApp.csproj",
         "packagesPath": "C:\\Users\\Magda\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Magda\\Challenge\\src\\CHallengeAPp\\obj\\",
+        "outputPath": "C:\\Users\\Magda\\Challenge\\src\\ChallengeApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Magda\\AppData\\Roaming\\NuGet\\NuGet.Config"
