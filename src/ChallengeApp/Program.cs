@@ -6,7 +6,7 @@ namespace ChallengeApp
     class Program
     {
         static void Main(string[] args)
-        { 
+        {
             var student = new Student("Magda");
             student.ChangeName("123Magda456");
 
@@ -16,6 +16,13 @@ namespace ChallengeApp
             student.GradeAdded += OnGradeAdded;
             student.GradeBelowC += OnGradeBelowC;
 
+            EnterGrade(student);
+
+            var stat = student.GetStatistics();
+        }
+
+        private static void EnterGrade(Student student)
+        {
             while (true)
             {
                 Console.WriteLine($"Enter grade for {student.Name}. To exit press 'q'.");
@@ -43,9 +50,6 @@ namespace ChallengeApp
                     Console.WriteLine("*************");
                 }
             }
-
-            var stat = student.GetStatistics();
-
         }
 
         static void OnGradeAdded(object sender, EventArgs args)

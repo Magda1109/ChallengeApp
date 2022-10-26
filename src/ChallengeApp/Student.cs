@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 namespace ChallengeApp
 {
-    public class Student : NamedObject
+    public delegate void GradeAddedDelegate(object sender, EventArgs args);
+    public delegate void GradeAddedBelowCDelegate(object sender, EventArgs args);
+
+    public class Student : StudentBase
     {
-        public delegate void GradeAddedDelegate(object sender, EventArgs args);
-        public delegate void GradeAddedBelowCDelegate(object sender, EventArgs args);
-        public event GradeAddedDelegate GradeAdded;
-        public event GradeAddedBelowCDelegate GradeBelowC;
+        public override event GradeAddedDelegate GradeAdded;
+        public override event GradeAddedBelowCDelegate GradeBelowC;
 
         private List<double> grades = new List<double>();
 
@@ -18,7 +19,7 @@ namespace ChallengeApp
         {
         }
 
-        public void ChangeName(string name)
+        public override void ChangeName(string name)
         {
             bool checkName = true;
             foreach (var sign in name)
@@ -38,7 +39,7 @@ namespace ChallengeApp
             }
         }
 
-        public void AddGrade(double grade)
+        public override void AddGrade(double grade)
         {
             if (grade > 75 && grade <= 100)
             {
@@ -61,7 +62,7 @@ namespace ChallengeApp
             }
         }
 
-        public void AddGrade(string grade)
+        public override void AddGrade(string grade)
         {
             bool success = int.TryParse(grade, out int number);
             if (success)
@@ -125,7 +126,7 @@ namespace ChallengeApp
             }
         }
 
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             var result = new Statistics();
             result.Average = 0.0;
