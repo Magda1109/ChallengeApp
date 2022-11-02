@@ -18,8 +18,8 @@ namespace ChallengeApp
             studentSaved.GradeAdded += OnGradeAdded;
             studentSaved.GradeBelowC += OnGradeBelowC;
 
-            EnterGrade(studentInMemory);
-            EnterGrade(studentSaved);
+           // EnterGrade(studentInMemory);
+           EnterGrade(studentSaved);
 
             var stat = studentInMemory.GetStatistics();
             Console.WriteLine($"The maximum grade is: {stat.High:N2}");
@@ -28,11 +28,11 @@ namespace ChallengeApp
             Console.WriteLine($"The letter grade is: {stat.Letter}");
         }
 
-        private static void EnterGrade(IStudent student)
+        private static void EnterGrade(IStudent studentInMemory)
         {
             while (true)
             {
-                Console.WriteLine($"Enter grade for {student.Name}. To exit press 'q'.");
+                Console.WriteLine($"Enter grade for {studentInMemory.Name}. To exit press 'q'.");
                 var input = Console.ReadLine();
 
                 if (input == "q")
@@ -42,7 +42,7 @@ namespace ChallengeApp
 
                 try
                 {
-                    student.AddGrade(input);
+                    studentInMemory.AddGrade(input);
                 }
                 catch (FormatException ex)
                 {
