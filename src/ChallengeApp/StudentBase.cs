@@ -13,5 +13,6 @@ namespace ChallengeApp
         public abstract void AddGrade(string grade); 
         public abstract void ChangeName(string name);
         public abstract Statistics GetStatistics(); 
+
     }
 }

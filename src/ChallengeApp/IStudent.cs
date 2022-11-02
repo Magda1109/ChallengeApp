@@ -9,5 +9,6 @@ namespace ChallengeApp
         string Name { get; }
         event GradeAddedDelegate GradeAdded;
         event GradeAddedBelowCDelegate GradeBelowC;
+
     }
 }

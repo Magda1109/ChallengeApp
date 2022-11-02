@@ -25,6 +25,8 @@ namespace ChallengeApp
             }
         }
 
+        private List<double> newList = new List<double>();
+
         public override void AddGrade(double grade)
         {
            {
