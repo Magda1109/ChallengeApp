@@ -8,7 +8,7 @@ namespace ChallengeApp
 
     public class InMemoryStudent : StudentBase
     {
-        private List<double> grades;
+        public List<double> grades;
         public InMemoryStudent(string name) : base(name)
         {
             grades = new List<double>();
