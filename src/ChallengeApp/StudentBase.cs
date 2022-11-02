@@ -12,9 +12,6 @@ namespace ChallengeApp
         public abstract void AddGrade(double grade); 
         public abstract void AddGrade(string grade); 
         public abstract void ChangeName(string name);
-        public virtual Statistics GetStatistics()
-        {
-            throw new System.NotImplementedException();
-        }
+        public abstract Statistics GetStatistics(); 
     }
 }

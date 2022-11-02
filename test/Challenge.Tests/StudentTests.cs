@@ -9,7 +9,7 @@ namespace Challenge.Tests
         [Fact]
         public void GetStatisticsWorksCorrectly()
         {
-            var student = new Student("Magda");
+            var student = new InMemoryStudent("Magda");
             student.AddGrade(10);
             student.AddGrade(20);
             student.AddGrade(30);

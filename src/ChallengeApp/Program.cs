@@ -7,21 +7,28 @@ namespace ChallengeApp
     {
         static void Main(string[] args)
         {
-            var student = new Student("Magda");
-            student.ChangeName("123Magda456");
+            var studentInMemory = new InMemoryStudent("Magda");
+            var studentSaved = new SavedStudent("Magda");
 
-            // var name = student.Name;
-            // student.Name = "ABC";
+            studentInMemory.ChangeName("123Magda456");
 
-            student.GradeAdded += OnGradeAdded;
-            student.GradeBelowC += OnGradeBelowC;
+            studentInMemory.GradeAdded += OnGradeAdded;
+            studentInMemory.GradeBelowC += OnGradeBelowC;
 
-            EnterGrade(student);
+            studentSaved.GradeAdded += OnGradeAdded;
+            studentSaved.GradeBelowC += OnGradeBelowC;
 
-            var stat = student.GetStatistics();
+            EnterGrade(studentInMemory);
+            EnterGrade(studentSaved);
+
+            var stat = studentInMemory.GetStatistics();
+            Console.WriteLine($"The maximum grade is: {stat.High:N2}");
+            Console.WriteLine($"The minimum grade is: {stat.Low:N2}");
+            Console.WriteLine($"The average is: {stat.Average:N2}");
+            Console.WriteLine($"The letter grade is: {stat.Letter}");
         }
 
-        private static void EnterGrade(Student student)
+        private static void EnterGrade(IStudent student)
         {
             while (true)
             {
