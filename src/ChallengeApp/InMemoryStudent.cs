@@ -3,54 +3,44 @@ using System.Collections.Generic;
 
 namespace ChallengeApp
 {
-    public delegate void GradeAddedDelegate(object sender, EventArgs args);
+
     public delegate void GradeAddedBelowCDelegate(object sender, EventArgs args);
 
     public class InMemoryStudent : StudentBase
     {
-        public List<double> grades;
-        public InMemoryStudent(string name) : base(name)
+        private List<double> grades = new List<double>();
+        public override List<double> Grades
         {
-            grades = new List<double>();
-        }
-
-        public override event GradeAddedDelegate GradeAdded;
-        public override event GradeAddedBelowCDelegate GradeBelowC;
-
-        public override void AddGrade(double grade)
-        {
+            get
             {
-                if (grade > 75 && grade <= 100)
-                {
-                    this.grades.Add(grade);
-
-                    if (GradeAdded != null)
-                    {
-                        GradeAdded(this, new EventArgs());
-                    }
-                }
-                else if (GradeBelowC != null && grade >= 0 && grade <= 75)
-                {
-                    GradeAdded(this, new EventArgs());
-                    GradeBelowC(this, new EventArgs());
-                    this.grades.Add(grade);
-                }
-                else
-                {
-                    throw new ArgumentException($"Grade '{grade}' has not been added as the value must be in the range 0-100.");
-                }
+                return this.grades;
             }
         }
 
+        public InMemoryStudent(string name) : base(name)
+        {
+        }
+
+        public override event GradeAddedBelowCDelegate GradeBelowC;
+
         public override void AddGrade(string grade)
         {
-            bool success = int.TryParse(grade, out int number);
+            bool success = double.TryParse(grade, out double number);
             if (success)
             {
                 if (number >= 0 && number <= 100)
                 {
-                    this.grades.Add(number);
-                    Console.WriteLine($"Grade '{grade}' has been added as {number}.");
+                    if (number > 75 && number <= 100)
+                    {
+                        this.grades.Add(number);
+                        Console.WriteLine($"Grade '{grade}' has been added as {number}.");
+                    }
+                    else if (number >= 0 && number <= 75)
+                    {
+                        GradeBelowC(this, new EventArgs());
+                        this.grades.Add(number);
+                        Console.WriteLine($"Grade '{grade}' has been added as {number}.");
+                    }
                 }
                 else
                 {
@@ -65,37 +55,37 @@ namespace ChallengeApp
                     switch (grade)
                     {
                         case "A":
-                            this.AddGrade(100);
+                            this.AddGrade("100");
                             break;
                         case "B":
-                            this.AddGrade(90);
+                            this.AddGrade("90");
                             break;
                         case "B+" or "+B":
-                            this.AddGrade(95);
+                            this.AddGrade("95");
                             break;
                         case "C":
-                            this.AddGrade(80);
+                            this.AddGrade("80");
                             break;
                         case "C+" or "+C":
-                            this.AddGrade(85);
+                            this.AddGrade("85");
                             break;
                         case "D":
-                            this.AddGrade(70);
+                            this.AddGrade("70");
                             break;
                         case "D+" or "+D":
-                            this.AddGrade(75);
+                            this.AddGrade("75");
                             break;
                         case "E":
-                            this.AddGrade(60);
+                            this.AddGrade("60");
                             break;
                         case "E+" or "+E":
-                            this.AddGrade(65);
+                            this.AddGrade("65");
                             break;
                         case "F":
-                            this.AddGrade(0);
+                            this.AddGrade("0");
                             break;
                         default:
-                            this.AddGrade(0);
+                            this.AddGrade("0");
                             break;
                     }
                 }
@@ -135,7 +125,7 @@ namespace ChallengeApp
                 Console.WriteLine("No grade has been entered.");
                 return result;
             }
-            
+
             for (var index = 0; index < grades.Count; index += 1)
             {
                 result.Add(grades[index]);

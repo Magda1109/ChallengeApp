@@ -13,7 +13,6 @@ C:\Users\Magda\Challenge\test\CHallenge.Tests\bin\Debug\net5.0\Challenge.Tests.d
 C:\Users\Magda\Challenge\test\CHallenge.Tests\bin\Debug\net5.0\Challenge.Tests.runtimeconfig.json
 C:\Users\Magda\Challenge\test\CHallenge.Tests\bin\Debug\net5.0\Challenge.Tests.runtimeconfig.dev.json
 C:\Users\Magda\Challenge\test\CHallenge.Tests\bin\Debug\net5.0\Challenge.Tests.dll
-C:\Users\Magda\Challenge\test\CHallenge.Tests\bin\Debug\net5.0\ref\Challenge.Tests.dll
 C:\Users\Magda\Challenge\test\CHallenge.Tests\bin\Debug\net5.0\Challenge.Tests.pdb
 C:\Users\Magda\Challenge\test\CHallenge.Tests\bin\Debug\net5.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll
 C:\Users\Magda\Challenge\test\CHallenge.Tests\bin\Debug\net5.0\Microsoft.TestPlatform.CoreUtilities.dll
@@ -105,3 +104,4 @@ C:\Users\Magda\Challenge\test\Challenge.Tests\bin\Debug\net5.0\ChallengeApp.runt
 C:\Users\Magda\Challenge\test\Challenge.Tests\bin\Debug\net5.0\ChallengeApp.exe
 C:\Users\Magda\Challenge\test\Challenge.Tests\bin\Debug\net5.0\ChallengeApp.dll
 C:\Users\Magda\Challenge\test\Challenge.Tests\bin\Debug\net5.0\ChallengeApp.pdb
+C:\Users\Magda\Challenge\test\Challenge.Tests\obj\Debug\net5.0\refint\Challenge.Tests.dll

@@ -3,7 +3,6 @@ C:\Users\Magda\Challenge\src\ChallengeApp\bin\Debug\net5.0\ChallengeApp.deps.jso
 C:\Users\Magda\Challenge\src\ChallengeApp\bin\Debug\net5.0\ChallengeApp.runtimeconfig.json
 C:\Users\Magda\Challenge\src\ChallengeApp\bin\Debug\net5.0\ChallengeApp.runtimeconfig.dev.json
 C:\Users\Magda\Challenge\src\ChallengeApp\bin\Debug\net5.0\ChallengeApp.dll
-C:\Users\Magda\Challenge\src\ChallengeApp\bin\Debug\net5.0\ref\ChallengeApp.dll
 C:\Users\Magda\Challenge\src\ChallengeApp\bin\Debug\net5.0\ChallengeApp.pdb
 C:\Users\Magda\Challenge\src\ChallengeApp\obj\Debug\net5.0\ChallengeApp.csproj.AssemblyReference.cache
 C:\Users\Magda\Challenge\src\ChallengeApp\obj\Debug\net5.0\ChallengeApp.GeneratedMSBuildEditorConfig.editorconfig
@@ -14,3 +13,4 @@ C:\Users\Magda\Challenge\src\ChallengeApp\obj\Debug\net5.0\ChallengeApp.dll
 C:\Users\Magda\Challenge\src\ChallengeApp\obj\Debug\net5.0\ref\ChallengeApp.dll
 C:\Users\Magda\Challenge\src\ChallengeApp\obj\Debug\net5.0\ChallengeApp.pdb
 C:\Users\Magda\Challenge\src\ChallengeApp\obj\Debug\net5.0\ChallengeApp.genruntimeconfig.cache
+C:\Users\Magda\Challenge\src\ChallengeApp\obj\Debug\net5.0\refint\ChallengeApp.dll
