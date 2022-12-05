@@ -1,3 +1,5 @@
+using System;
+
 namespace ChallengeApp
 {
     public class NamedObject 

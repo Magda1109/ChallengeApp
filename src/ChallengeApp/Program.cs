@@ -12,7 +12,7 @@ namespace ChallengeApp
         {
             var studentInMemory = new InMemoryStudent("Magda");
             var studentSaved = new SavedStudent("Magda");
-           
+
             studentInMemory.GradeBelowC += OnGradeBelowC;
             studentSaved.GradeBelowC += OnGradeBelowC;
 

@@ -150,20 +150,5 @@ namespace ChallengeApp
                 writer.WriteLine($"{actualTime}: {result}");
             }
         }
-
-        //public void GradesIntoList()
-        //{
-        //    using (var reader = File.OpenText($"{FileNameGrades}"))
-        //    {
-        //        Grades.Clear();
-        //        var line = reader.ReadLine();
-        //        while (line != null)
-        //        {
-        //            var number = double.Parse(line);
-        //            Grades.Add(number);
-        //            line = reader.ReadLine();
-        //        }
-        //    }
-        //}
     }
 }

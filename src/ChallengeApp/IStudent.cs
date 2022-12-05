@@ -7,6 +7,5 @@ namespace ChallengeApp
         Statistics GetStatistics();
         string Name { get; }
         event GradeAddedBelowCDelegate GradeBelowC;
-
     }
 }
