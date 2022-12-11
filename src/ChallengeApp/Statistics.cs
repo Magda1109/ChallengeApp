@@ -31,19 +31,19 @@ namespace ChallengeApp
             {
                 switch (Average)
                 {
-                    case var d when d >= 90:
+                    case >= 90:
                         return 'A';
 
-                    case var d when d >= 80:
+                    case >= 80:
                         return 'B';
 
-                    case var d when d >= 70:
+                    case >= 70:
                         return 'C';
 
-                    case var d when d >= 60:
+                    case >= 60:
                         return 'D';
 
-                    case var d when d >= 50:
+                    case >= 50:
                         return 'E';
 
                     default:

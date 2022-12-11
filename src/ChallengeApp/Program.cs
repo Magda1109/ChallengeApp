@@ -21,11 +21,11 @@ namespace ChallengeApp
 
             if (userInput == "memory")
             {
-                EnterGradeMemory(studentInMemory);
+                EnterGrade(studentInMemory);
             }
             else if (userInput == "file")
             {
-                EnterGradeSaved(studentSaved);
+                EnterGrade(studentSaved);
             }
             else
             {
@@ -33,11 +33,11 @@ namespace ChallengeApp
             }
         }
 
-        private static void EnterGradeMemory(IStudent studentInMemory)
+        private static void EnterGrade(IStudent student)
         {
             while (true)
             {
-                Console.WriteLine($"Enter grade for {studentInMemory.Name}. Press 's' to see statistics. To exit press 'q'");
+                Console.WriteLine($"Enter grade for {student.Name}. Press 's' to see statistics. To exit press 'q'.");
                 var input = Console.ReadLine();
 
                 if (input == "q")
@@ -46,49 +46,12 @@ namespace ChallengeApp
                 }
                 else if (input == "s")
                 {
-                    Statistics(studentInMemory);
-                    break;
-                }
-
-                try
-                {
-                    studentInMemory.AddGrade(input);
-                }
-
-                catch (FormatException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                catch (ArgumentException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    Console.WriteLine("*************");
-                }
-            }
-        }
-
-        private static void EnterGradeSaved(IStudent studentSaved)
-        {
-            while (true)
-            {
-                Console.WriteLine($"Enter grade for {studentSaved.Name}. Press 's' to see statistics. To exit press 'q'.");
-                var input = Console.ReadLine();
-
-                if (input == "q")
-                {
-                    break;
-                }
-                else if (input == "s")
-                {
-                    Statistics(studentSaved);
+                    PrintStatistics(student);
                     break;
                 }
                 try
                 {
-                    studentSaved.AddGrade(input);
+                    student.AddGrade(input);
                 }
                 catch (FormatException ex)
                 {
@@ -105,7 +68,7 @@ namespace ChallengeApp
             }
         }
 
-        private static void Statistics(IStudent studentStats)
+        private static void PrintStatistics(IStudent studentStats)
         {
             var stat = studentStats.GetStatistics();
             Console.WriteLine($"The maximum grade is: {stat.High:N2}");
