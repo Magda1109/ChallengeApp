@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace ChallengeApp
@@ -10,8 +11,27 @@ namespace ChallengeApp
 
         public abstract event GradeAddedBelowCDelegate GradeBelowC;
         public abstract void AddGrade(string grade);
-        public abstract void ChangeName(string name);
         public abstract Statistics GetStatistics();
+
+        public void ChangeName(string name)
+        {
+            bool checkName = false;
+            foreach (var sign in name)
+            {
+                if (char.IsDigit(sign))
+                {
+                    checkName = true;
+                }
+            }
+            if (checkName)
+            {
+                Console.WriteLine("Invalid name");
+            }
+            else
+            {
+                Name = name;
+            }
+        }
 
         public void AddLetterGrade(string grade)
         {

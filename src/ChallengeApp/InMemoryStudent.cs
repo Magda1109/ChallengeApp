@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace ChallengeApp
 {
@@ -53,7 +54,7 @@ namespace ChallengeApp
             }
         }
 
-        public override void ChangeName(string name)
+        public static void ChangeName()
         {
         }
 

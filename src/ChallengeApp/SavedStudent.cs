@@ -16,7 +16,7 @@ namespace ChallengeApp
 
         public override event GradeAddedBelowCDelegate GradeBelowC;
 
-        public override void ChangeName(string name)
+        public static void ChangeName()
         {
         }
 
