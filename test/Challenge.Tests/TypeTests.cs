@@ -72,17 +72,17 @@ namespace Challenge.Tests
             Assert.Equal("New Name", student1.Name);
         }
 
-        private void GetStudentSetName(out InMemoryStudent student, string name)
+        private void GetStudentSetName(out StudentInMemory student, string name)
         {
-            student = new InMemoryStudent(name);
+            student = new StudentInMemory(name);
         }
 
-        private InMemoryStudent GetStudent(string name)
+        private StudentInMemory GetStudent(string name)
         {
-            return new InMemoryStudent(name);
+            return new StudentInMemory(name);
         }
 
-        private void SetName(InMemoryStudent student, string name)
+        private void SetName(StudentInMemory student, string name)
         {
             student.Name = name;
         }

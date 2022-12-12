@@ -2,9 +2,9 @@ using System;
 
 namespace ChallengeApp
 {
-    public class NamedObject
+    public class Person
     {
-        public NamedObject(string name)
+        public Person(string name)
         {
             this.Name = name;
         }

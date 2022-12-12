@@ -1,41 +1,16 @@
 using System;
-using System.IO;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace ChallengeApp
 {
-    public class SavedStudent : StudentBase
+    public class StudentInMemory : StudentAbstractBase
     {
-        const string FileNameGrades = "Grades.txt";
-        const string FileNameAudit = "Audit.txt";
-        DateTime actualTime = DateTime.UtcNow;
-
-        public SavedStudent(string name) : base(name)
-        {
-        }
-
+        private List<double> grades = new List<double>();
         public override event GradeAddedBelowCDelegate GradeBelowC;
 
-        public static void ChangeName()
+        public StudentInMemory(string name) : base(name)
         {
-        }
-
-        public override Statistics GetStatistics()
-        {
-            var result = new Statistics();
-
-            using (var reader = File.OpenText($"{FileNameGrades}"))
-            {
-                var line = reader.ReadLine();
-
-                while (line != null)
-                {
-                    var number = double.Parse(line);
-                    result.Add(number);
-                    line = reader.ReadLine();
-                }
-            }
-            return result;
         }
 
         public override void AddGrade(string grade)
@@ -47,13 +22,13 @@ namespace ChallengeApp
                 {
                     if (number > 75 && number <= 100)
                     {
-                        CreateFile(number);
+                        this.grades.Add(number);
                         Console.WriteLine($"Grade '{grade}' has been added as {number}.");
                     }
                     else if (number >= 0 && number <= 75)
                     {
                         GradeBelowC(this, new EventArgs());
-                        CreateFile(number);
+                        this.grades.Add(number);
                         Console.WriteLine($"Grade '{grade}' has been added as {number}.");
                     }
                 }
@@ -69,7 +44,6 @@ namespace ChallengeApp
                 {
                     AddLetterGrade(grade);
                 }
-
                 else
                 {
                     Console.WriteLine($"Grade '{grade}' is incorrect.");
@@ -77,16 +51,15 @@ namespace ChallengeApp
             }
         }
 
-        private void CreateFile(double result)
+        public override Statistics GetStatistics()
         {
-            using (var writer = File.AppendText($"{FileNameGrades}"))
+            var result = new Statistics();
+
+            for (var index = 0; index < grades.Count; index += 1)
             {
-                writer.WriteLine(result);
+                result.Add(grades[index]);
             }
-            using (var writer = File.AppendText($"{FileNameAudit}"))
-            {
-                writer.WriteLine($"{actualTime}: {result}");
-            }
+            return result;
         }
     }
 }

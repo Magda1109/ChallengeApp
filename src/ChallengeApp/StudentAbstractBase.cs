@@ -1,15 +1,19 @@
 using System;
-using System.Collections.Generic;
 
 namespace ChallengeApp
 {
-    public abstract class StudentBase : NamedObject, IStudent
+    public abstract class StudentAbstractBase : Person, IStudent
     {
-        public StudentBase(string name) : base(name)
+        public delegate void GradeAddedBelowCDelegate(object sender, EventArgs args);
+        public abstract event GradeAddedBelowCDelegate GradeBelowC; 
+        public void AddGrade(double grade)
         {
+            throw new NotImplementedException();
         }
 
-        public abstract event GradeAddedBelowCDelegate GradeBelowC;
+        public StudentAbstractBase(string name) : base(name)
+        {
+        }
         public abstract void AddGrade(string grade);
         public abstract Statistics GetStatistics();
 

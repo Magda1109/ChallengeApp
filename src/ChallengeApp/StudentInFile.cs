@@ -1,20 +1,37 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
-using System.Xml.Linq;
 
 namespace ChallengeApp
 {
-    public delegate void GradeAddedBelowCDelegate(object sender, EventArgs args);
-
-    public class InMemoryStudent : StudentBase
+    public class StudentInFile : StudentAbstractBase
     {
-        private List<double> grades = new List<double>();
+        const string FileNameGrades = "Grades.txt";
+        const string FileNameAudit = "Audit.txt";
+        DateTime actualTime = DateTime.UtcNow;
 
-        public InMemoryStudent(string name) : base(name)
+        public override event GradeAddedBelowCDelegate GradeBelowC;
+        public StudentInFile(string name) : base(name)
         {
         }
 
-        public override event GradeAddedBelowCDelegate GradeBelowC;
+        public override Statistics GetStatistics()
+        {
+            var result = new Statistics();
+
+            using (var reader = File.OpenText($"{FileNameGrades}"))
+            {
+                var line = reader.ReadLine();
+
+                while (line != null)
+                {
+                    var number = double.Parse(line);
+                    result.Add(number);
+                    line = reader.ReadLine();
+                }
+            }
+            return result;
+        }
 
         public override void AddGrade(string grade)
         {
@@ -25,13 +42,13 @@ namespace ChallengeApp
                 {
                     if (number > 75 && number <= 100)
                     {
-                        this.grades.Add(number);
+                        CreateFile(number);
                         Console.WriteLine($"Grade '{grade}' has been added as {number}.");
                     }
                     else if (number >= 0 && number <= 75)
                     {
                         GradeBelowC(this, new EventArgs());
-                        this.grades.Add(number);
+                        CreateFile(number);
                         Console.WriteLine($"Grade '{grade}' has been added as {number}.");
                     }
                 }
@@ -47,6 +64,7 @@ namespace ChallengeApp
                 {
                     AddLetterGrade(grade);
                 }
+
                 else
                 {
                     Console.WriteLine($"Grade '{grade}' is incorrect.");
@@ -54,19 +72,16 @@ namespace ChallengeApp
             }
         }
 
-        public static void ChangeName()
+        private void CreateFile(double result)
         {
-        }
-
-        public override Statistics GetStatistics()
-        {
-            var result = new Statistics();
-
-            for (var index = 0; index < grades.Count; index += 1)
+            using (var writer = File.AppendText($"{FileNameGrades}"))
             {
-                result.Add(grades[index]);
+                writer.WriteLine(result);
             }
-            return result;
+            using (var writer = File.AppendText($"{FileNameAudit}"))
+            {
+                writer.WriteLine($"{actualTime}: {result}");
+            }
         }
     }
 }

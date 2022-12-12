@@ -10,26 +10,38 @@ namespace ChallengeApp
     {
         static void Main(string[] args)
         {
-            var studentInMemory = new InMemoryStudent("Magda");
-            var studentSaved = new SavedStudent("Magda");
+            var studentInMemory = new StudentInMemory("Magda");
+            var studentInFile = new StudentInFile("Magda");
 
             studentInMemory.GradeBelowC += OnGradeBelowC;
-            studentSaved.GradeBelowC += OnGradeBelowC;
+            studentInFile.GradeBelowC += OnGradeBelowC;
 
-            Console.WriteLine("Hello! Please type 'memory' if you would like to save statistics in computer's memory or 'file' in case it should be saved in a file.");
-            var userInput = Console.ReadLine();
+            Console.WriteLine("Hello! Welcome to GradeBook application. \n");
 
-            if (userInput == "memory")
+            while (true)
             {
-                EnterGrade(studentInMemory);
-            }
-            else if (userInput == "file")
-            {
-                EnterGrade(studentSaved);
-            }
-            else
-            {
-                Console.WriteLine("Incorrect input");
+                Console.WriteLine("Please type 'memory' if you would like to save statistics in computer's memory or 'file' in case it should be saved in a file.");
+                var userInput = Console.ReadLine().ToLower();
+
+                if (userInput == "memory")
+                {
+                    EnterGrade(studentInMemory);
+                    break;
+                }
+                else if (userInput == "file")
+                {
+                    EnterGrade(studentInFile);
+                    break;
+                }
+                else if (userInput == "q")
+                {
+                    Console.WriteLine("Bye!");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect input. Please try again.");
+                }
             }
         }
 
@@ -38,7 +50,7 @@ namespace ChallengeApp
             while (true)
             {
                 Console.WriteLine($"Enter grade for {student.Name}. Press 's' to see statistics. To exit press 'q'.");
-                var input = Console.ReadLine();
+                var input = Console.ReadLine().ToLower();
 
                 if (input == "q")
                 {
@@ -79,7 +91,7 @@ namespace ChallengeApp
 
         static void OnGradeBelowC(object sender, EventArgs args)
         {
-            Console.WriteLine($"Oh no! We should inform student's parents about this fact.");
+            Console.WriteLine("Oh no! We should inform student's parents about this fact.");
         }
     }
 }
