@@ -54,10 +54,6 @@ namespace ChallengeApp
             }
         }
 
-        public static void ChangeName()
-        {
-        }
-
         public override Statistics GetStatistics()
         {
             var result = new Statistics();

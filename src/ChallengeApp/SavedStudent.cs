@@ -16,10 +16,6 @@ namespace ChallengeApp
 
         public override event GradeAddedBelowCDelegate GradeBelowC;
 
-        public static void ChangeName()
-        {
-        }
-
         public override Statistics GetStatistics()
         {
             var result = new Statistics();
