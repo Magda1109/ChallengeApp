@@ -15,39 +15,27 @@ namespace ChallengeApp
 
         public override void AddGrade(string grade)
         {
-            bool success = double.TryParse(grade, out double number);
-            if (success)
+            var success = double.TryParse(grade, out var number);
+            switch (success)
             {
-                if (number >= 0 && number <= 100)
-                {
-                    if (number > 75 && number <= 100)
-                    {
-                        this.grades.Add(number);
-                        Console.WriteLine($"Grade '{grade}' has been added as {number}.");
-                    }
-                    else if (number >= 0 && number <= 75)
-                    {
-                        GradeBelowC(this, new EventArgs());
-                        this.grades.Add(number);
-                        Console.WriteLine($"Grade '{grade}' has been added as {number}.");
-                    }
-                }
-                else
-                {
+                case true when number > 75 && number <= 100:
+                    grades.Add(number);
+                    Console.WriteLine($"Grade '{grade}' has been added as {number}.");
+                    break;
+                case true when number >= 0 && number <= 75:
+                    GradeBelowC(this, new EventArgs());
+                    grades.Add(number);
+                    Console.WriteLine($"Grade '{grade}' has been added as {number}.");
+                    break;
+                case true:
                     Console.WriteLine($"Grade '{grade}' has not been added as the value must be in the range 0-100.");
-                }
-            }
-
-            else if (!success)
-            {
-                if (grade == "A" || grade == "B" || grade == "C" || grade == "D" || grade == "E" || grade == "F" || grade == "B+" || grade == "+B" || grade == "C+" || grade == "+C" || grade == "D+" || grade == "+D" || grade == "E+" || grade == "+E" || grade == "F")
-                {
+                    break;
+                case false when grade is "A" or "B" or "C" or "D" or "E" or "F" or "B+" or "+B" or "C+" or "+C" or "D+" or "+D" or "E+" or "+E" or "F":
                     AddLetterGrade(grade);
-                }
-                else
-                {
+                    break;
+                case false:
                     Console.WriteLine($"Grade '{grade}' is incorrect.");
-                }
+                    break;
             }
         }
 

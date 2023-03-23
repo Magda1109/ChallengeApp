@@ -5,37 +5,13 @@ namespace ChallengeApp
     public abstract class StudentAbstractBase : Person, IStudent
     {
         public delegate void GradeAddedBelowCDelegate(object sender, EventArgs args);
-        public abstract event GradeAddedBelowCDelegate GradeBelowC; 
-        public void AddGrade(double grade)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract event GradeAddedBelowCDelegate GradeBelowC;
 
         public StudentAbstractBase(string name) : base(name)
         {
         }
         public abstract void AddGrade(string grade);
         public abstract Statistics GetStatistics();
-
-        public void ChangeName(string name)
-        {
-            bool checkName = false;
-            foreach (var sign in name)
-            {
-                if (char.IsDigit(sign))
-                {
-                    checkName = true;
-                }
-            }
-            if (checkName)
-            {
-                Console.WriteLine("Invalid name");
-            }
-            else
-            {
-                Name = name;
-            }
-        }
 
         public void AddLetterGrade(string grade)
         {
