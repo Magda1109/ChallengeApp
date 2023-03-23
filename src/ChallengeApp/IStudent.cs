@@ -6,6 +6,7 @@
         void AddGrade(string grade);
         Statistics GetStatistics();
         void AddLetterGrade(string grade);
-        event StudentAbstractBase.GradeAddedBelowCDelegate GradeBelowC;
+    
+        event GradeAddedBelowCDelegate GradeBelowC;
     }
 }

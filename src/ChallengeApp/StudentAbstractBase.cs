@@ -2,14 +2,15 @@ using System;
 
 namespace ChallengeApp
 {
+    public delegate void GradeAddedBelowCDelegate(object sender, EventArgs args);
     public abstract class StudentAbstractBase : Person, IStudent
     {
-        public delegate void GradeAddedBelowCDelegate(object sender, EventArgs args);
         public abstract event GradeAddedBelowCDelegate GradeBelowC;
 
         public StudentAbstractBase(string name) : base(name)
         {
         }
+
         public abstract void AddGrade(string grade);
         public abstract Statistics GetStatistics();
 
@@ -17,34 +18,34 @@ namespace ChallengeApp
         {
             switch (grade)
             {
-                case "A":
+                case "a":
                     AddGrade("100");
                     break;
-                case "B":
+                case "b":
                     AddGrade("90");
                     break;
-                case "B+" or "+B":
+                case "b+" or "+b":
                     AddGrade("95");
                     break;
-                case "C":
+                case "c":
                     this.AddGrade("80");
                     break;
-                case "C+" or "+C":
+                case "c+" or "+c":
                     this.AddGrade("85");
                     break;
-                case "D":
+                case "d":
                     this.AddGrade("70");
                     break;
-                case "D+" or "+D":
+                case "d+" or "+d":
                     this.AddGrade("75");
                     break;
-                case "E":
+                case "e":
                     this.AddGrade("60");
                     break;
-                case "E+" or "+E":
+                case "e+" or "+e":
                     this.AddGrade("65");
                     break;
-                case "F":
+                case "f":
                     this.AddGrade("0");
                     break;
                 default:

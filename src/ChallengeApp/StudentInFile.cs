@@ -50,7 +50,7 @@ namespace ChallengeApp
                 case true:
                     Console.WriteLine($"Grade '{grade}' has not been added as the value must be in the range 0-100.");
                     break;
-                case false when grade is "A" or "B" or "C" or "D" or "E" or "F" or "B+" or "+B" or "C+" or "+C" or "D+" or "+D" or "E+" or "+E" or "F":
+                case false when grade is "a" or "b" or "c" or "d" or "e" or "f" or "b+" or "+b" or "c+" or "+c" or "d+" or "+d" or "e+" or "+e" or "f":
                     AddLetterGrade(grade);
                     break;
                 case false:

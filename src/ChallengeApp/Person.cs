@@ -1,5 +1,3 @@
-using System;
-
 namespace ChallengeApp
 {
     public class Person
