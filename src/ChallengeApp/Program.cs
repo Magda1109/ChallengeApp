@@ -18,7 +18,6 @@ namespace ChallengeApp
 
             Console.WriteLine("Hello! Welcome to GradeBook application. \n");
 
-
             while (true)
             {
                 Console.WriteLine("Please type 'memory' if you would like to save statistics in computer's memory or 'file' in case it should be saved in a file.");
