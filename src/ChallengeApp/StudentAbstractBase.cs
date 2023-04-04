@@ -28,28 +28,28 @@ namespace ChallengeApp
                     AddGrade("95");
                     break;
                 case "c":
-                    this.AddGrade("80");
+                    AddGrade("80");
                     break;
                 case "c+" or "+c":
-                    this.AddGrade("85");
+                    AddGrade("85");
                     break;
                 case "d":
-                    this.AddGrade("70");
+                    AddGrade("70");
                     break;
                 case "d+" or "+d":
-                    this.AddGrade("75");
+                    AddGrade("75");
                     break;
                 case "e":
-                    this.AddGrade("60");
+                    AddGrade("60");
                     break;
                 case "e+" or "+e":
-                    this.AddGrade("65");
+                    AddGrade("65");
                     break;
                 case "f":
-                    this.AddGrade("0");
+                    AddGrade("0");
                     break;
                 default:
-                    this.AddGrade("0");
+                    AddGrade("0");
                     break;
             }
         }

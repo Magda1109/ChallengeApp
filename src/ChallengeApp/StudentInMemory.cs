@@ -41,6 +41,11 @@ namespace ChallengeApp
 
         public override Statistics GetStatistics()
         {
+            if (grades.Count == 0)
+            {
+                Console.WriteLine("No grade has been entered.");
+                return null;
+            }
             var result = new Statistics();
 
             for (var index = 0; index < grades.Count; index += 1)

@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Collections.Generic;
 
 namespace ChallengeApp
 {
@@ -13,24 +12,6 @@ namespace ChallengeApp
         public override event GradeAddedBelowCDelegate GradeBelowC;
         public StudentInFile(string name) : base(name)
         {
-        }
-
-        public override Statistics GetStatistics()
-        {
-            var result = new Statistics();
-
-            using (var reader = File.OpenText($"{FileNameGrades}"))
-            {
-                var line = reader.ReadLine();
-
-                while (line != null)
-                {
-                    var number = double.Parse(line);
-                    result.Add(number);
-                    line = reader.ReadLine();
-                }
-            }
-            return result;
         }
 
         public override void AddGrade(string grade)
@@ -68,6 +49,32 @@ namespace ChallengeApp
             using (var writer = File.AppendText($"{FileNameAudit}"))
             {
                 writer.WriteLine($"{actualTime}: {result}");
+            }
+        }
+
+        public override Statistics GetStatistics()
+        {
+            try
+            {
+                var result = new Statistics();
+
+                using (var reader = File.OpenText($"{FileNameGrades}"))
+                {
+                    var line = reader.ReadLine();
+
+                    while (line != null)
+                    {
+                        var number = double.Parse(line);
+                        result.Add(number);
+                        line = reader.ReadLine();
+                    }
+                }
+                return result;
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("No grade has been entered.");
+                return null;
             }
         }
     }

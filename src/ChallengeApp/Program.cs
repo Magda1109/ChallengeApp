@@ -1,8 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Runtime.Intrinsics.Arm;
-using System.Xml.Linq;
 
 namespace ChallengeApp
 {
@@ -28,20 +24,18 @@ namespace ChallengeApp
                     EnterGrade(studentInMemory);
                     break;
                 }
-                else if (userInput == "file")
+                if (userInput == "file")
                 {
                     EnterGrade(studentInFile);
                     break;
                 }
-                else if (userInput == "q")
+                if (userInput == "q")
                 {
                     Console.WriteLine("Bye!");
                     break;
                 }
-                else
-                {
-                    Console.WriteLine("Incorrect input. Please try again.");
-                }
+
+                Console.WriteLine("Incorrect input. Please try again.");
             }
         }
 
@@ -56,37 +50,33 @@ namespace ChallengeApp
                 {
                     break;
                 }
-                else if (input == "s")
+                if (input == "s")
                 {
                     PrintStatistics(student);
                     break;
                 }
-                try
-                {
-                    student.AddGrade(input);
-                }
-                catch (FormatException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                catch (ArgumentException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    Console.WriteLine("*************");
-                }
+                student.AddGrade(input);
             }
         }
 
         private static void PrintStatistics(IStudent studentStats)
         {
-            var stat = studentStats.GetStatistics();
-            Console.WriteLine($"The maximum grade is: {stat.High:N2}");
-            Console.WriteLine($"The minimum grade is: {stat.Low:N2}");
-            Console.WriteLine($"The average is: {stat.Average:N2}");
-            Console.WriteLine($"The letter grade is: {stat.Letter}");
+            try
+            {
+                var stat = studentStats.GetStatistics();
+                Console.WriteLine($"The maximum grade is: {stat.High:N2}");
+                Console.WriteLine($"The minimum grade is: {stat.Low:N2}");
+                Console.WriteLine($"The average is: {stat.Average:N2}");
+                Console.WriteLine($"The letter grade is: {stat.Letter}");
+            }
+            catch (NullReferenceException ex)
+            {
+                Console.WriteLine("Exception has been identified ");
+            }
+            finally
+            {
+                Console.WriteLine("************************");
+            }
         }
 
         static void OnGradeBelowC(object sender, EventArgs args)

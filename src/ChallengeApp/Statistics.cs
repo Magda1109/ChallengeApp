@@ -17,13 +17,7 @@ namespace ChallengeApp
             Low = double.MaxValue;
         }
 
-        public double Average
-        {
-            get
-            {
-                return Sum / Count;
-            }
-        }
+        public double Average => Sum / Count;
 
         public char Letter
         {
