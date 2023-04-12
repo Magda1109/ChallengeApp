@@ -69,7 +69,7 @@ namespace ChallengeApp
                 Console.WriteLine($"The average is: {stat.Average:N2}");
                 Console.WriteLine($"The letter grade is: {stat.Letter}");
             }
-            catch (NullReferenceException ex)
+            catch (NullReferenceException)
             {
                 Console.WriteLine("Exception has been identified ");
             }

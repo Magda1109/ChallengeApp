@@ -9,35 +9,13 @@ namespace ChallengeApp
         const string FileNameAudit = "Audit.txt";
         DateTime actualTime = DateTime.UtcNow;
 
-        public override event GradeAddedBelowCDelegate GradeBelowC;
         public StudentInFile(string name) : base(name)
         {
         }
 
-        public override void AddGrade(string grade)
+        protected override void AddGradeInternal(double number)
         {
-            var success = double.TryParse(grade, out var number);
-            switch (success)
-            {
-                case true when number > 75 && number <= 100:
-                    CreateFile(number);
-                    Console.WriteLine($"Grade '{grade}' has been added as {number}.");
-                    break;
-                case true when number >= 0 && number <= 75:
-                    GradeBelowC(this, new EventArgs());
-                    CreateFile(number);
-                    Console.WriteLine($"Grade '{grade}' has been added as {number}.");
-                    break;
-                case true:
-                    Console.WriteLine($"Grade '{grade}' has not been added as the value must be in the range 0-100.");
-                    break;
-                case false when grade is "a" or "b" or "c" or "d" or "e" or "f" or "b+" or "+b" or "c+" or "+c" or "d+" or "+d" or "e+" or "+e" or "f":
-                    AddLetterGrade(grade);
-                    break;
-                case false:
-                    Console.WriteLine($"Grade '{grade}' is incorrect.");
-                    break;
-            }
+            CreateFile(number);
         }
 
         private void CreateFile(double result)
@@ -77,5 +55,6 @@ namespace ChallengeApp
                 return null;
             }
         }
+
     }
 }
